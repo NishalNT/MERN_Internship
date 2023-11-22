@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+
+
+.header{
+    left: auto;
+    right: auto;
+    position: relative;
+}
+
+
+a{
+    margin-right: 20px;
+    font-size: 25px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    width: 200px;
+    height: 60px;
+    background-color: #6528F7;
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+@media (max-width: 450px){
+    a{
+        width: 100px;
+        padding: 6px;
+        font-size: 20px;
+    }
+}

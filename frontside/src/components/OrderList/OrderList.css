@@ -1,0 +1,53 @@
+table{
+    margin: 20px auto 0 auto;
+    border-collapse: collapse;
+    border: 3px solid #9400FF;
+    font-weight: 600;
+    width: 60%;
+    position: relative;
+}
+
+tr,th,td{
+    padding: 16px;
+    border: 3px solid black;
+}
+
+th{
+    background-color: #9400FF;
+    color: white;
+}
+
+button{
+    padding: 10px;
+    width: 70px;
+    background-color: #9400FF;
+    border: 2px solid #9400FF;
+    margin-right: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 28px;
+}
+
+.color{
+    border: 2px solid black;
+    width: 150px;
+    height: 80px;
+}
+
+@media screen and (max-width: 500px) and (min-width: 300px){
+    table{
+        width: 40%;
+        margin-top: 20px;
+        font-weight: 600;
+        font-size: 12px;
+    }
+    .color{
+        height: 20px;
+        width: 30px;
+    }
+    tr,th,td{
+        padding: 0;
+    }
+}
+
