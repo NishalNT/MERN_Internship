@@ -1,70 +1,77 @@
 const express = require('express');
-const app = express();
-const PORT = 5000;
-const Order = require('./models/Order');
+const mongoose = require('mongoose');
+const cors = require('cors');
 const path = require('path');
 
-const cors = require('cors');
+require('./db'); 
 
-require('./db');
+const app = express();
+const PORT = process.env.PORT || 5000;
+
 app.use(express.json());
-// app.use(express.static(path.join(__dirname + "/public")))
 app.use(cors());
 
+// Uncomment the following line if you have static files in a 'public' directory
+// app.use(express.static(path.join(__dirname, 'public')));
+
+const Order = require('./models/Order');
 
 app.post("/order", async (req, res) => {
     try {
         const data = req.body;
         const createdOrder = new Order(data);
         await createdOrder.save();
+        console.log("Order created:", createdOrder);
         res.send("Order Created");
-    }catch(error){
-        res.send(error);
+    } catch (error) {
+        console.error("Error creating order:", error);
+        res.status(500).send({ error: "Internal Server Error" });
     }
 });
 
-
-app.get("/order", async (req,res) => {
+app.get("/order", async (req, res) => {
     try {
         const orderList = await Order.find();
         res.send(orderList);
     } catch (error) {
-        res.send(error);
+        console.error("Error fetching orders:", error);
+        res.status(500).send({ error: "Internal Server Error" });
     }
 });
 
-
-//update using put
-app.put("/order/:id", async (req,res) => {
+app.put("/order/:id", async (req, res) => {
     try {
         const data = req.body;
-        await Order.updateOne({_id: req.params.id}, { $set: data });
+        await Order.updateOne({ _id: req.params.id }, { $set: data });
+        console.log("Order Updated");
         res.send("Order Updated");
     } catch (error) {
-        res.send(error);
+        console.error("Error updating order:", error);
+        res.status(500).send({ error: "Internal Server Error" });
     }
 });
 
-//delete operation
-app.delete("/order/:id", async (req,res) => {
+app.delete("/order/:id", async (req, res) => {
     try {
-        await Order.deleteOne({_id: req.params.id});
+        await Order.deleteOne({ _id: req.params.id });
+        console.log("Order Deleted");
         res.send("Order Deleted");
     } catch (error) {
-        res.send(error);
+        console.error("Error deleting order:", error);
+        res.status(500).send({ error: "Internal Server Error" });
     }
 });
 
-//get the order by id
-app.get("/order/:id", async (req,res) => {
+app.get("/order/:id", async (req, res) => {
     try {
         const order = await Order.findById({ _id: req.params.id });
         res.send(order);
     } catch (error) {
-        res.send(error);
+        console.error("Error fetching order by ID:", error);
+        res.status(500).send({ error: "Internal Server Error" });
     }
 });
 
-app.listen(PORT, function () {
-    console.log("Server is running on localhost:" + PORT);
+app.listen(PORT, () => {
+    console.log(`Server is running on localhost:${PORT}`);
 });
