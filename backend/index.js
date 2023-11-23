@@ -2,17 +2,14 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 const Order = require('./models/Order');
+const path = require('path');
 
 const cors = require('cors');
 
 require('./db');
 app.use(express.json());
+app.use(express.static(path.join(__dirname + "/public")))
 app.use(cors());
-
-app.listen(PORT, function () {
-    console.log("Server is running on localhost:" + PORT);
-});
-
 
 
 app.post("/order", async (req, res) => {
@@ -37,12 +34,37 @@ app.get("/order", async (req,res) => {
 });
 
 
-//get the Order by id
-app.get("/order/:id", async (req,res) => {
+//update using put
+app.put("/order/:id", async (req,res) => {
     try {
-        const Order = await Order.findById({ _id: req.params.id });
-        res.send(Order);
+        const data = req.body;
+        await Order.updateOne({_id: req.params.id}, { $set: data });
+        res.send("Order Updated");
     } catch (error) {
         res.send(error);
     }
+});
+
+//delete operation
+app.delete("/order/:id", async (req,res) => {
+    try {
+        await Order.deleteOne({_id: req.params.id});
+        res.send("Order Deleted");
+    } catch (error) {
+        res.send(error);
+    }
+});
+
+//get the order by id
+app.get("/order/:id", async (req,res) => {
+    try {
+        const order = await Order.findById({ _id: req.params.id });
+        res.send(order);
+    } catch (error) {
+        res.send(error);
+    }
+});
+
+app.listen(PORT, function () {
+    console.log("Server is running on localhost:" + PORT);
 });

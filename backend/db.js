@@ -1,10 +1,16 @@
 const { response } = require("express");
 const mongoose = require("mongoose");
 
+const dotenv = require("dotenv").config();
+mongoose.set("strictQuery", false);
 
-mongoose.connect(
-    "mongodb+srv://nishalnthingalaya1:65VhOBwWOiFXkqPE@cluster0.epr1y3v.mongodb.net/Order?retryWrites=true&w=majority"
-)
+mongoose.connect(process.env.DB_CONNECT, {
+
+    useUnifiedTopology: true,
+
+    useNewUrlParser: true,
+
+})
 .then((response) => {
     console.log("Connected to database")
 })

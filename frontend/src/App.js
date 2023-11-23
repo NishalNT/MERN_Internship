@@ -11,7 +11,8 @@ function App() {
       <Navbar/>
         <Routes>
           <Route path="/OrderList" element={<OrderList />} />
-          <Route path="/Order" element={<OrderForm />} />
+          <Route path="/OrderForm" element={<OrderForm />} />
+          <Route path="/OrderForm/:id" element={<OrderForm />} />
         </Routes>
       </BrowserRouter>
     </div>

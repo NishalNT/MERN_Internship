@@ -51,8 +51,14 @@ function OrderForm() {
     };
     console.log(data);
     try {
-      //creating the user
-      const response = await axios.post("http://localhost:5000/order", data);
+      let response;
+      if (orderId) {
+        //edit the student
+        response = await axios.put("http://localhost:5000/order/" + orderId, data);
+      } else {
+        //creating the user
+        response = await axios.post("http://localhost:5000/order", data);
+      }
       alert(response.data);
     } catch (error) {
       alert(error);

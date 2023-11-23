@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./OrderList.css";
+import { useNavigate } from "react-router-dom";
+
 
 function OrderList() {
   const [orderList, setOrderList] = useState([]);
+
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
     fetchData();
@@ -19,6 +24,22 @@ function OrderList() {
     }
   };
 
+  const handleDelete = async (orderId) => {
+    try {
+      const response = await axios.delete(
+        "http://localhost:5000/order/" + orderId
+      );
+      alert(response.data);
+      fetchData();
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const handleEdit = (orderId) => {
+    navigate("/OrderForm/" + orderId);
+  };
+
   return (
     <div>
       <table border={2}>
@@ -30,6 +51,7 @@ function OrderList() {
             <th>Box Color</th>
             <th>Destination</th>
             <th>Total Cost</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -61,6 +83,12 @@ function OrderList() {
                 </td>
                 <td>{order.dest}</td>
                 <td>{total} INR</td>
+                <td>
+                  <button onClick={() => handleEdit(order._id)}>Edit</button>
+                  <button onClick={() => handleDelete(order._id)}>
+                    Delete
+                  </button>
+                </td>
               </tr>
             );
           })}

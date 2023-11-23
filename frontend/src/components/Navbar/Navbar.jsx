@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <div className='header'>
         <Link to={"/OrderList"}>Order List</Link>
-        <Link to={"/Order"}>Order Form</Link>
+        <Link to={"/OrderForm"}>Order Form</Link>
     </div>
   )
 }

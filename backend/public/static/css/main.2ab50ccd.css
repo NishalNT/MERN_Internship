@@ -1,0 +1,234 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  margin: 0;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+}
+.App {
+  text-align: center;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin 20s linear infinite;
+  }
+}
+.App-header {
+  align-items: center;
+  background-color: #282c34;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  justify-content: center;
+  min-height: 100vh;
+}
+.App-link {
+  color: #61dafb;
+}
+@keyframes App-logo-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+.header {
+  left: auto;
+  position: relative;
+  right: auto;
+}
+a {
+  background-color: #6528f7;
+  border: 3px solid #fff;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 600;
+  height: 60px;
+  margin-right: 20px;
+  padding: 10px;
+  text-decoration: none;
+  width: 200px;
+}
+@media (max-width: 450px) {
+  a {
+    font-size: 20px;
+    padding: 6px;
+    width: 100px;
+  }
+}
+table {
+  border: 3px solid #9400ff;
+  border-collapse: collapse;
+  font-weight: 600;
+  margin: 20px auto 0;
+  position: relative;
+  width: 60%;
+}
+td,
+th,
+tr {
+  border: 3px solid #000;
+  padding: 16px;
+}
+button,
+th {
+  background-color: #9400ff;
+  color: #fff;
+}
+button {
+  border: 2px solid #9400ff;
+  border-radius: 28px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 6px;
+  padding: 10px;
+  width: 70px;
+}
+.color {
+  border: 2px solid #000;
+  height: 80px;
+  width: 150px;
+}
+@media screen and (max-width: 500px) and (min-width: 300px) {
+  table {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 20px;
+    width: 40%;
+  }
+  .color {
+    height: 20px;
+    width: 30px;
+  }
+  td,
+  th,
+  tr {
+    padding: 0;
+  }
+}
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body {
+  align-items: center;
+  background: #f3f3f3;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+.header {
+  bottom: 10px;
+}
+.container {
+  background: #fff;
+  box-shadow: 0 5px 15px #00000059;
+  left: auto;
+  margin: 25px 28px;
+  max-width: 650px;
+  padding: 28px;
+  position: relative;
+  right: auto;
+}
+h2 {
+  border-bottom: 1px solid #687eff;
+  color: #687eff;
+  font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.content {
+  justify-content: space-between;
+  padding: 20px 0;
+}
+.content,
+.input-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.input-box {
+  padding-bottom: 15px;
+  width: 50%;
+}
+.input-box:nth-child(2n) {
+  justify-content: end;
+}
+.input-box label {
+  color: purple;
+  font-weight: 700;
+  margin: 5px 0;
+  width: 95%;
+}
+.input-box input {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  height: 40px;
+  outline: none;
+  padding: 0 10px;
+  width: 95%;
+}
+input.clr {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: initial;
+  border: none;
+  width: 95%;
+}
+.input-box input:is(:focus, :valid),
+.input-box select:is(:focus, :valid) {
+  box-shadow: 0 3px 6px #0003;
+}
+.btn {
+  background: #687eff;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  height: 40px;
+  width: 100%;
+}
+.btn:hover {
+  box-shadow: 0 7px 29px 0 #64646f33;
+  opacity: 0.8;
+}
+@media only screen and (max-width: 420px) {
+  .content {
+    display: block;
+  }
+  .input-box input {
+    width: 100%;
+  }
+  .input-box:nth-child(2n) {
+    justify-content: start;
+  }
+  .input-box {
+    width: 100%;
+  }
+}
+.input-box input[type="number"]::-webkit-inner-spin-button,
+.input-box input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.input-box select {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  height: 40px;
+  outline: none;
+  padding: 0 10px;
+  width: 95%;
+}
+/*# sourceMappingURL=main.2ab50ccd.css.map*/
