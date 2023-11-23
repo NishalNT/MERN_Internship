@@ -1,13 +1,8 @@
-// api/order.js
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
 const Order = require('../models/Order');  
-
-const PORT = process.env.PORT || 5000;
-
 
 const app = express();
 app.use(cors());
@@ -57,20 +52,5 @@ app.delete("/order/:id", async (req, res) => {
         res.status(500).send({ error: "Internal Server Error" });
     }
 });
-
-app.get("/order/:id", async (req, res) => {
-    try {
-        const order = await Order.findById({ _id: req.params.id });
-        res.send(order);
-    } catch (error) {
-        console.error("Error fetching order by ID:", error);
-        res.status(500).send({ error: "Internal Server Error" });
-    }
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on localhost:${PORT}`);
-});
-
 
 module.exports = app;
