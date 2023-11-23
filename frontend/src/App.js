@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import OrderList from './components/OrderList/OrderList';
-import OrderForm from './components/Order/OrderForm';
+import OrderForm from './components/OrderForm/OrderForm';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 function App() {
