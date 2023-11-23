@@ -62,4 +62,16 @@ app.delete("/order/:id", async (req, res) => {
     }
 });
 
-module.exports = app;
+app.get("/order/:id", async (req, res) => {
+    try {
+        const order = await Order.findById({ _id: req.params.id });
+        res.send(order);
+    } catch (error) {
+        console.error("Error fetching order by ID:", error);
+        res.status(500).send({ error: "Internal Server Error" });
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on localhost:${PORT}`);
+});
